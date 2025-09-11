@@ -3,7 +3,9 @@ const app = express();
 
 
 app.get('/', (req, res) => {
-  res.send('nestor se la come al mundo!');
+  res.send('Hello World!');
+  res.send('Hola Mundo');
+  res.send('Bonjour le monde');
 });
 
 app.listen(3000, () => {
