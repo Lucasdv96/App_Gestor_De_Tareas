@@ -1,14 +1,7 @@
-const express = require('express');
-const app = express();
+import express from 'express';
 
-
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-  res.send('Hola Mundo');
-  res.send('Bonjour le monde');
-});
-
-app.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000');
-  console.log('Servidor ejecutándose en http://localhost:3000');
-});
+export function createApp() {
+    const app = express();
+    app.use(express.json());
+    return app;
+}
