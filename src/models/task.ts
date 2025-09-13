@@ -1,5 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
+//Esta es la clase tarea que va a tener los atributos basicos de una tarea
+//luego se le pueden ir agregando mas cosas como prioridad, etiquetas, etc
+//la tarea va a estar asociada a un ADMIN y a uno o varios USERS 
+//tenemos que ver como solucionar eso, si ponerle un atributo a la tarea que sea adminId y userIds o hacer una tabla intermedia
+//por ahora lo dejamos asi y despues vemos como hacer eso 
+
+
 @Entity()
 export class Task {
     @PrimaryGeneratedColumn('increment')
