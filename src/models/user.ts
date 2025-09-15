@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity,PrimaryGeneratedColumn, Column } from "typeorm";
 
 //la idea de esta clase es ir guardando los usuarios que se registren en la app y que puedan tener sus tareas asociadas 
 //e ir agrendale mas cosas a medida que se nos ocurran 
