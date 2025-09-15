@@ -7,6 +7,7 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 //user solo va a poder ver y modificar sus tareas y su perfil
 //la tarea va a estar asociada a un ADMIN (que es el que las crea) y a uno o varios USERS (los que las van a hacer)
 //hay que pensar como hacer eso
+//LUCAS: Me gusta la idea de admin y user
 
 
 @Entity()

@@ -5,6 +5,7 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 //la tarea va a estar asociada a un ADMIN y a uno o varios USERS 
 //tenemos que ver como solucionar eso, si ponerle un atributo a la tarea que sea adminId y userIds o hacer una tabla intermedia
 //por ahora lo dejamos asi y despues vemos como hacer eso 
+//LUCAS: Okay animal 
 
 
 @Entity()
@@ -40,6 +41,7 @@ export class Task {
     }
 
     //este para marcar que esta pendiente(aunque empieza como pendiente pero bueno en caso de que se arrepientan qseyo)
+    
     uncompleted() {
         this.completed = false;
         this.updatedAt = new Date();
