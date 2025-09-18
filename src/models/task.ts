@@ -7,7 +7,6 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 //por ahora lo dejamos asi y despues vemos como hacer eso 
 //LUCAS: Okay animal 
 
-
 @Entity()
 export class Task {
     @PrimaryGeneratedColumn('increment')
@@ -34,29 +33,58 @@ export class Task {
     @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP'})
     updatedAt!: Date;
 
-    //este es para macar la tarea como completada (no me deja poner completed porque ya existe la propiedad)
+    // NUEVO: prioridad de la tarea
+    @Column({ default: "media" })
+    priority!: "baja" | "media" | "alta";
+
+    // NUEVO: etiquetas (tags)
+    @Column("simple-array", { nullable: true })
+    tags?: string[];
+
+    // NUEVO: soft delete
+    @Column({ default: false })
+    deleted!: boolean;
+
+    //este es para marcar la tarea como completada
     complete() {
         this.completed = true;
         this.updatedAt = new Date();
     }
 
-    //este para marcar que esta pendiente(aunque empieza como pendiente pero bueno en caso de que se arrepientan qseyo)
-    
+    //este para marcar que esta pendiente
     uncompleted() {
         this.completed = false;
         this.updatedAt = new Date();
     }
 
-    //este actualiza el titulo y la descripcion de la tarea si es neecsario
+    //actualiza el titulo y la descripcion de la tarea
     updateDetails(title: string, description: string){
         this.title = title;
         this.description = description;
         this.updatedAt = new Date();
     }
 
-    // este para cambiarle la fecha de vencimiento
+    //cambiar la fecha de vencimiento
     updateDueDate(dueDate: Date){
         this.due_Date = dueDate;
+        this.updatedAt = new Date();
+    }
+
+    // NUEVO: cambiar prioridad
+    setPriority(priority: "baja" | "media" | "alta") {
+        this.priority = priority;
+        this.updatedAt = new Date();
+    }
+
+    // NUEVO: actualizar etiquetas
+    setTags(tags: string[]) {
+        this.tags = tags;
+        this.updatedAt = new Date();
+    }
+
+    // NUEVO: soft delete
+    softDelete() {
+        this.deleted = true;
         this.updatedAt = new Date();
     }
 }
