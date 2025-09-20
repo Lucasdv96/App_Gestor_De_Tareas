@@ -18,25 +18,40 @@ const typeorm_1 = require("typeorm");
 //por ahora lo dejamos asi y despues vemos como hacer eso 
 //LUCAS: Okay animal 
 let Task = class Task {
-    //este es para macar la tarea como completada (no me deja poner completed porque ya existe la propiedad)
+    //este es para marcar la tarea como completada
     complete() {
         this.completed = true;
         this.updatedAt = new Date();
     }
-    //este para marcar que esta pendiente(aunque empieza como pendiente pero bueno en caso de que se arrepientan qseyo)
+    //este para marcar que esta pendiente
     uncompleted() {
         this.completed = false;
         this.updatedAt = new Date();
     }
-    //este actualiza el titulo y la descripcion de la tarea si es neecsario
+    //actualiza el titulo y la descripcion de la tarea
     updateDetails(title, description) {
         this.title = title;
         this.description = description;
         this.updatedAt = new Date();
     }
-    // este para cambiarle la fecha de vencimiento
+    //cambiar la fecha de vencimiento
     updateDueDate(dueDate) {
         this.due_Date = dueDate;
+        this.updatedAt = new Date();
+    }
+    // NUEVO: cambiar prioridad
+    setPriority(priority) {
+        this.priority = priority;
+        this.updatedAt = new Date();
+    }
+    // NUEVO: actualizar etiquetas
+    setTags(tags) {
+        this.tags = tags;
+        this.updatedAt = new Date();
+    }
+    // NUEVO: soft delete
+    softDelete() {
+        this.deleted = true;
         this.updatedAt = new Date();
     }
 };
@@ -73,6 +88,18 @@ __decorate([
     (0, typeorm_1.Column)({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' }),
     __metadata("design:type", Date)
 ], Task.prototype, "updatedAt", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ default: "media" }),
+    __metadata("design:type", String)
+], Task.prototype, "priority", void 0);
+__decorate([
+    (0, typeorm_1.Column)("simple-array", { nullable: true }),
+    __metadata("design:type", Array)
+], Task.prototype, "tags", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ default: false }),
+    __metadata("design:type", Boolean)
+], Task.prototype, "deleted", void 0);
 exports.Task = Task = __decorate([
     (0, typeorm_1.Entity)()
 ], Task);

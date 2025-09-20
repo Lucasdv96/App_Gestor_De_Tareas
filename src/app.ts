@@ -18,6 +18,7 @@ app.listen(3000, () => {
   console.log('Servidor ejecutándose en http://localhost:3000');
 });
 
+
 // QUE ONDA RAMA, VAS A VER QUE HICE TREMENDO QUILOMBO CON TODO, ESCUCHA PARA PODER RUNEAR EL SERVER SIN PROBLEMAS
 // LO QUE TENES QUE HACER ES QUE CADA VEZ QUE LO VAS A RUNEAR ESCRIBIS EN CONSOLA
 // npm run build
